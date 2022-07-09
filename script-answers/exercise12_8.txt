@@ -1,0 +1,80 @@
+Script started on 2022-07-09 12:42:15+08:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="131" LINES="28"]
+]0;kaozgamer@BEAST: /mnt/c/Dev/part12-containers-applications/script-answers[01;32mkaozgamer@BEAST[00m:[01;34m/mnt/c/Dev/part12-containers-applications/script-answers[00m$ docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED             STATUS          PORTS                     NAMES
+1bbb293cfa3b   nginx     "/docker-entrypoint.…"   19 minutes ago      Up 19 minutes   0.0.0.0:8080->80/tcp      pedantic_feynman
+1d369a4bf864   mongo     "docker-entrypoint.s…"   About an hour ago   Up 16 minutes   0.0.0.0:3456->27017/tcp   todo-backend_mongo_1
+]0;kaozgamer@BEAST: /mnt/c/Dev/part12-containers-applications/script-answers[01;32mkaozgamer@BEAST[00m:[01;34m/mnt/c/Dev/part12-containers-applications/script-answers[00m$ docker exec -it todo-backend_mongo_1 mongo
+MongoDB shell version v5.0.9
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6720f953-150e-49ed-8771-e7d0a2b9caa0") }
+MongoDB server version: 5.0.9
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+> [3G[J[3G^C
+bye
+]0;kaozgamer@BEAST: /mnt/c/Dev/part12-containers-applications/script-answers[01;32mkaozgamer@BEAST[00m:[01;34m/mnt/c/Dev/part12-containers-applications/script-answers[00m$ docker exec -it todo-backend_mongo_1 mongo -u root -=[Kp exa mple
+MongoDB shell version v5.0.9
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4f3c956f-61ec-46b0-bb67-3020bd5a3747") }
+MongoDB server version: 5.0.9
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting: 
+        2022-07-09T04:35:27.610+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2022-07-09T04:35:28.594+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs[3G[Jshow dbs[11G
+admin         0.000GB
+config        0.000GB
+local         0.000GB
+the_database  0.000GB
+> use the_database[3G[Juse the_database[19G
+switched to db the_database
+> show collections[3G[Jshow collections[19G
+todos
+> db.todos.find()[3G[Jdb.todos.find[1;34m([0m)[17G[3G[Jdb.todos.find()[18G[3G[Jdb.todos.find([17G{})[3G[Jdb.todos.find({})[20G
+{ "_id" : ObjectId("62c8f3f59d5d96b115f9aa1e"), "text" : "Write code", "done" : false }
+{ "_id" : ObjectId("62c8f3f59d5d96b115f9aa1f"), "text" : "Learn about containers", "done" : false }
+> db.todos.insertOne( { text: "Test Todo[3G[Jdb.todos.insertOne( { text: "Test Tod[40G[3G[Jdb.todos.insertOne( { text: "Test To[39G[3G[Jdb.todos.insertOne( { text: "Test T[38GODO", done: false } )[3G[Jdb.todos.insertOne( { text: "Test TODO", done: false } )[59G
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("62c90a1fe62030877d1cf87b")
+}
+> [3G[Jdb.todos.insertOne( { text: "Test TODO", done: false } )[59G[3G[Jdb.todos.find({})[20G[3G[Jdb.todos.find({})[20G
+{ "_id" : ObjectId("62c8f3f59d5d96b115f9aa1e"), "text" : "Write code", "done" : false }
+{ "_id" : ObjectId("62c8f3f59d5d96b115f9aa1f"), "text" : "Learn about containers", "done" : false }
+{ "_id" : ObjectId("62c90a1fe62030877d1cf87b"), "text" : "Test TODO", "done" : false }
+> exit[3G[Jexit[7G
+bye
+]0;kaozgamer@BEAST: /mnt/c/Dev/part12-containers-applications/script-answers[01;32mkaozgamer@BEAST[00m:[01;34m/mnt/c/Dev/part12-containers-applications/script-answers[00m$ exit
+exit
+
+Script done on 2022-07-09 12:55:05+08:00 [COMMAND_EXIT_CODE="0"]
