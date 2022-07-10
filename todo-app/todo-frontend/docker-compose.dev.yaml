@@ -2,6 +2,7 @@ services:
   app:
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_BACKEND_URL=http://localhost:3000
     image: todo-front-dev
     build:
       context: .
