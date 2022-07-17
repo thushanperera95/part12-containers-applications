@@ -8,7 +8,7 @@ RUN npm ci
 RUN [ "npm", "run", "test" ]
 
 FROM base as build
-ENV REACT_APP_BACKEND_URL http://localhost:3000
+ENV REACT_APP_BACKEND_URL http://localhost:8080/api/
 COPY --from=test /usr/src/app /usr/src/app
 RUN npm ci --production
 RUN npm run build
